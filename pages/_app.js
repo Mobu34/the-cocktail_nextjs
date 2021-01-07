@@ -15,8 +15,6 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 library.add(faBars, faTimes);
 
 const MyApp = ({ Component, pageProps }) => {
-  const API = "http://localhost:3000";
-
   const [isDrawerMenuOpen, setIsDrawerMenuOpen] = useState(false);
   const [ingredients, setIngredients] = useState([]);
 
@@ -29,11 +27,7 @@ const MyApp = ({ Component, pageProps }) => {
         ingredients={ingredients}
         setIngredients={setIngredients}
       />
-      <Component
-        {...pageProps}
-        API={API}
-        setIsDrawerMenuOpen={setIsDrawerMenuOpen}
-      />
+      <Component {...pageProps} setIsDrawerMenuOpen={setIsDrawerMenuOpen} />
     </div>
   );
 };
