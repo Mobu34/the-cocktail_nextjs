@@ -6,7 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Title from "../components/Title";
 import CarouselItem from "../components/CarouselItem";
 
-const Home = ({ alcohols, nonalcohols }) => {
+const Home = ({ API, setIsDrawerMenuOpen, alcohols, nonalcohols }) => {
   const getRandomDrinks = (type) => {
     const drinks = [];
 
@@ -20,11 +20,17 @@ const Home = ({ alcohols, nonalcohols }) => {
   };
 
   return (
-    <div className="Home">
+    <div
+      className="Home"
+      onClick={() => {
+        setIsDrawerMenuOpen(false);
+      }}
+    >
       <Head>
         <title>The Cocktail - Welcome</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       {alcohols && (
         <div className="Home-first-container">
           <div className="wrapper">
@@ -66,6 +72,7 @@ const Home = ({ alcohols, nonalcohols }) => {
 export default Home;
 
 export const getServerSideProps = async (context) => {
+  console.log(context);
   return {
     props: {
       alcohols: await fetchData("alcohols"),
@@ -77,7 +84,7 @@ export const getServerSideProps = async (context) => {
 const fetchData = async (type) => {
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/welcome/${type}`
+      `http://localhost:3000/api/drinks/${type}`
     );
 
     return response.data;

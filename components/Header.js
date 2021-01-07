@@ -1,7 +1,10 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/router";
 
 const Header = ({ setIsDrawerMenuOpen }) => {
+  const router = useRouter();
+
   return (
     <header>
       <div className="wrapper Header-container">
@@ -19,7 +22,7 @@ const Header = ({ setIsDrawerMenuOpen }) => {
         >
           ICON
         </div>
-        <h1>The Cocktail</h1>
+        <h1 onClick={() => router.push("/")}>The Cocktail</h1>
         <div></div>
       </div>
     </header>

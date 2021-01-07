@@ -18,6 +18,7 @@ const MyApp = ({ Component, pageProps }) => {
   const API = "http://localhost:3000";
 
   const [isDrawerMenuOpen, setIsDrawerMenuOpen] = useState(false);
+  const [ingredients, setIngredients] = useState([]);
 
   return (
     <div className="App">
@@ -25,8 +26,14 @@ const MyApp = ({ Component, pageProps }) => {
       <DrawerMenu
         isDrawerMenuOpen={isDrawerMenuOpen}
         setIsDrawerMenuOpen={setIsDrawerMenuOpen}
+        ingredients={ingredients}
+        setIngredients={setIngredients}
       />
-      <Component {...pageProps} API={API} />
+      <Component
+        {...pageProps}
+        API={API}
+        setIsDrawerMenuOpen={setIsDrawerMenuOpen}
+      />
     </div>
   );
 };

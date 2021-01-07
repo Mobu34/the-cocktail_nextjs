@@ -6,14 +6,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import IngredientItem from "./IngredientItem";
 
-const DrawerMenu = ({ isDrawerMenuOpen, setIsDrawerMenuOpen }) => {
-  const [ingredients, setIngredients] = useState([]);
-
+const DrawerMenu = ({
+  isDrawerMenuOpen,
+  setIsDrawerMenuOpen,
+  ingredients,
+  setIngredients,
+}) => {
   const router = useRouter();
 
-  const handleClick = (name) => {
+  const handleCloseClick = () => {
+    setIsDrawerMenuOpen(false);
+    setIngredients([]);
+  };
+
+  const handleAllDrinksClick = (name) => {
     router.push(`/drinks/${name}`);
     setIsDrawerMenuOpen(false);
+    setIngredients([]);
   };
 
   const getAllIngredients = async () => {
@@ -40,24 +49,22 @@ const DrawerMenu = ({ isDrawerMenuOpen, setIsDrawerMenuOpen }) => {
         <div></div>
         <h3>Menu</h3>
         <FontAwesomeIcon icon="times" />
-        <div
-          className="DrawerMenu-close-icon"
-          onClick={() => setIsDrawerMenuOpen(false)}
-        ></div>
+        <div className="DrawerMenu-close-icon" onClick={handleCloseClick}></div>
       </div>
       <div className="DrawerMenu-btn-container">
-        <div className="DrawerMenu-btn" onClick={() => handleClick("alcohol")}>
+        <div
+          className="DrawerMenu-btn"
+          onClick={() => handleAllDrinksClick("alcohol")}
+        >
           Cocktails alcoolisés
         </div>
         <div
           className="DrawerMenu-btn"
-          onClick={() => handleClick("nonalcohol")}
+          onClick={() => handleAllDrinksClick("nonalcohol")}
         >
           Cocktails sans alcool
         </div>
-        <div className="DrawerMenu-btn" onClick={() => handleClick("favorite")}>
-          Cocktails favoris
-        </div>
+        <div className="DrawerMenu-btn">Cocktails favoris</div>
         <div className="DrawerMenu-btn" onClick={getAllIngredients}>
           Ingrédients
         </div>
