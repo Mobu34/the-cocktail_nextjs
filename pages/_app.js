@@ -1,7 +1,18 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import "../styles/Header.css";
+import "../styles/Home.css";
+import "../styles/CarouselItem.css";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+import Header from "../components/Header";
 
-export default MyApp
+const MyApp = ({ Component, pageProps }) => {
+  const API = "http://localhost:3000";
+  return (
+    <div className="App">
+      <Header />
+      <Component {...pageProps} API={API} />
+    </div>
+  );
+};
+
+export default MyApp;

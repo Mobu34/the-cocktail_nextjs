@@ -1,65 +1,105 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import axios from "axios";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-export default function Home() {
+import Title from "../components/Title";
+import CarouselItem from "../components/CarouselItem";
+
+const Home = ({ alcohols, nonalcohols }) => {
+  const getRandomDrinks = (type) => {
+    const drinks = [];
+
+    for (let i = 0; i < 10; i++) {
+      const random = Math.floor(Math.random() * type.drinks.length);
+      if (drinks.indexOf(alcohols.drinks[i]) === -1) {
+        drinks.push(alcohols.drinks[random]);
+      }
+    }
+    return drinks;
+  };
+
   return (
-    <div className={styles.container}>
+    <div className="Home">
       <Head>
-        <title>Create Next App</title>
+        <title>The Cocktail - Welcome</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      {alcohols && (
+        <div className="Home-first-container">
+          <div className="wrapper">
+            <Title title="Faites vous plaisir notre sélection de cocktails alcoolisés ..." />
+          </div>
+          <div className="Home-carousel-container">
+            <div className="wrapper">
+              <div className="Home-carousel-subcontainer">
+                <CarouselItem
+                  getRandomDrinks={getRandomDrinks}
+                  drinkType={alcohols}
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      )}
+      {alcohols && (
+        <div className="Home-second-container">
+          <div className="wrapper">
+            <Title title="Mais aussi sans alcool ..." />
+          </div>
+          <div className="Home-carousel-container">
+            <div className="wrapper">
+              <div className="Home-carousel-subcontainer">
+                <CarouselItem
+                  getRandomDrinks={getRandomDrinks}
+                  drinkType={nonalcohols}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* {nonalcohols && (
+        <div className="Home-carousel-second-container">
+          <div className="wrapper">
+            <Title title="Mais aussi sans alcool ..." />
+          </div>
+          <div className="Home-carousel-container">
+            <div className="wrapper">
+              <div className="Home-carousel-subcontainer">
+                <Carousel className="Home-carousel-alcohol-container">
+                  {getRandomDrinks(nonalcohols).map((drink) => {
+                    return <CarouselItem key={drink.idDrink} drink={drink} />;
+                  })}
+                </Carousel>
+              </div>
+            </div>
+          </div>
+        </div>
+      )} */}
     </div>
-  )
-}
+  );
+};
+
+export default Home;
+
+export const getServerSideProps = async (context) => {
+  return {
+    props: {
+      alcohols: await fetchData("alcohols"),
+      nonalcohols: await fetchData("nonalcohols"),
+    },
+  };
+};
+
+const fetchData = async (type) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/api/welcome/${type}`
+    );
+
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};

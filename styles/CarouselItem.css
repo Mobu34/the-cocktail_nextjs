@@ -1,0 +1,20 @@
+.CarouselItem {
+  width: 500px;
+  position: relative;
+  cursor: pointer;
+}
+.CarouselItem-container {
+  height: 500px;
+  width: 100%;
+}
+.CarouselItem-drinkname {
+  position: absolute;
+  color: green;
+  top: 10px;
+  z-index: 99;
+  background-color: #fff;
+  padding: 10px;
+  color: var(--color-orange);
+  font-family: var(--font-dancingScript);
+  font-size: 20px;
+}
