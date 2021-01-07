@@ -2,3 +2,10 @@ header {
   border-bottom: var(--color-wine) solid 3px;
   height: 50px;
 }
+.Header-container {
+  /* background-color: chartreuse; */
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

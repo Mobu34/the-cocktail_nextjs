@@ -146,6 +146,10 @@ body {
   width: 100%;
   margin: auto;
 }
+.Link {
+  text-decoration: none;
+  color: #000;
+}
 h1 {
   font-size: 40px;
 }
@@ -156,6 +160,7 @@ h2 {
 
 /* App */
 .App {
+  position: relative;
 }
 
 /* Home */

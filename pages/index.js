@@ -59,24 +59,6 @@ const Home = ({ alcohols, nonalcohols }) => {
           </div>
         </div>
       )}
-      {/* {nonalcohols && (
-        <div className="Home-carousel-second-container">
-          <div className="wrapper">
-            <Title title="Mais aussi sans alcool ..." />
-          </div>
-          <div className="Home-carousel-container">
-            <div className="wrapper">
-              <div className="Home-carousel-subcontainer">
-                <Carousel className="Home-carousel-alcohol-container">
-                  {getRandomDrinks(nonalcohols).map((drink) => {
-                    return <CarouselItem key={drink.idDrink} drink={drink} />;
-                  })}
-                </Carousel>
-              </div>
-            </div>
-          </div>
-        </div>
-      )} */}
     </div>
   );
 };
