@@ -3,16 +3,15 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useRouter } from "next/router";
 
-const CarouselItem = ({ getRandomDrinks, drinkType }) => {
+const CarouselItem = ({ data }) => {
   const router = useRouter();
 
   const handleClick = (id) => {
     router.push(`/drink/${id}`);
-    // console.log("clicked");
   };
   return (
     <Carousel className="CarouselItem" autoPlay>
-      {getRandomDrinks(drinkType).map((drink) => {
+      {data.map((drink) => {
         return (
           <div
             key={drink.idDrink}

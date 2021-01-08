@@ -6,18 +6,6 @@ import Title from "../components/Title";
 import CarouselItem from "../components/CarouselItem";
 
 const Home = ({ setIsDrawerMenuOpen, alcohols, nonalcohols }) => {
-  const getRandomDrinks = (type) => {
-    const drinks = [];
-
-    for (let i = 0; i < 10; i++) {
-      const random = Math.floor(Math.random() * type.drinks.length);
-      if (drinks.indexOf(alcohols.drinks[i]) === -1) {
-        drinks.push(alcohols.drinks[random]);
-      }
-    }
-    return drinks;
-  };
-
   return (
     <>
       <Head>
@@ -39,10 +27,7 @@ const Home = ({ setIsDrawerMenuOpen, alcohols, nonalcohols }) => {
             <div className="Home-carousel-container">
               <div className="wrapper">
                 <div className="Home-carousel-subcontainer">
-                  <CarouselItem
-                    getRandomDrinks={getRandomDrinks}
-                    drinkType={alcohols}
-                  />
+                  <CarouselItem data={alcohols} />
                 </div>
               </div>
             </div>
@@ -56,10 +41,7 @@ const Home = ({ setIsDrawerMenuOpen, alcohols, nonalcohols }) => {
             <div className="Home-carousel-container">
               <div className="wrapper">
                 <div className="Home-carousel-subcontainer">
-                  <CarouselItem
-                    getRandomDrinks={getRandomDrinks}
-                    drinkType={nonalcohols}
-                  />
+                  <CarouselItem data={nonalcohols} />
                 </div>
               </div>
             </div>
@@ -88,7 +70,16 @@ const fetchData = async (type) => {
   try {
     const response = await axios.get(`${API}/drinks/${type}`);
 
-    return response.data;
+    const drinks = [];
+
+    for (let i = 0; i < 10; i++) {
+      const random = Math.floor(Math.random() * response.data.drinks.length);
+      if (drinks.indexOf(response.data.drinks[i]) === -1) {
+        drinks.push(response.data.drinks[random]);
+      }
+    }
+
+    return drinks;
   } catch (err) {
     console.log(err);
   }
