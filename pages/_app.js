@@ -9,6 +9,7 @@ import "../styles/IngredientItem.css";
 import "../styles/DrinksPage.css";
 import "../styles/DrinkItem.css";
 import "../styles/DrinkPage.css";
+import "../styles/SearchResult.css";
 
 import Header from "../components/Header";
 import DrawerMenu from "../components/DrawerMenu";
@@ -20,10 +21,18 @@ library.add(faBars, faTimes);
 const MyApp = ({ Component, pageProps }) => {
   const [isDrawerMenuOpen, setIsDrawerMenuOpen] = useState(false);
   const [ingredients, setIngredients] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   return (
     <div className="App">
-      <Header setIsDrawerMenuOpen={setIsDrawerMenuOpen} />
+      <Header
+        setIsDrawerMenuOpen={setIsDrawerMenuOpen}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        searchResults={searchResults}
+        setSearchInput={setSearchResults}
+      />
       <DrawerMenu
         isDrawerMenuOpen={isDrawerMenuOpen}
         setIsDrawerMenuOpen={setIsDrawerMenuOpen}

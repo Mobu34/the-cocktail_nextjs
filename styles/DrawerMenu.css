@@ -15,9 +15,11 @@
 .DrawerMenu-header {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 .DrawerMenu-header > div,
-.DrawerMenu-header > h3 {
+.DrawerMenu-header > h3,
+.DrawerMenu-header > svg {
   flex: 1;
 }
 .DrawerMenu-header > h3 {

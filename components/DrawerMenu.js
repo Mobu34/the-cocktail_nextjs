@@ -48,8 +48,8 @@ const DrawerMenu = ({
       <div className="DrawerMenu-header">
         <div></div>
         <h3>Menu</h3>
-        <FontAwesomeIcon icon="times" />
-        <div className="DrawerMenu-close-icon" onClick={handleCloseClick}></div>
+        <FontAwesomeIcon icon="times" onClick={handleCloseClick} />
+        {/* <div className="DrawerMenu-close-icon" onClick={handleCloseClick}></div> */}
       </div>
       <div className="DrawerMenu-btn-container">
         <div

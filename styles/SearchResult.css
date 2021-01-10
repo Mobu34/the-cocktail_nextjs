@@ -1,0 +1,9 @@
+.SearchResult {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.SearchResult:hover {
+  background-color: var(--color-rose);
+  color: #fff;
+}
