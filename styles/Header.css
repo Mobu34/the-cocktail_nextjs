@@ -1,6 +1,16 @@
 header {
-  border-bottom: var(--color-wine) solid 3px;
-  height: 50px;
+  /* border-bottom: var(--color-wine) solid 3px; */
+  /* height: 50px; */
+  /* border-bottom: #ecbbaf solid 3px; */
+  /* background-color: #ecbbaf; */
+  /* background: url("../assets/rosegoldbgc.jpg"); */
+  /* color: #fff; */
+  /* color: #aeaeaa; */
+  position: fixed;
+  width: 100%;
+  /* background-color: black; */
+  top: 0;
+  z-index: 1;
 }
 .Header-container {
   /* background-color: chartreuse; */

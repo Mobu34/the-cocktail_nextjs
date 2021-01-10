@@ -6,6 +6,9 @@ import "../styles/Home.css";
 import "../styles/CarouselItem.css";
 import "../styles/DrawerMenu.css";
 import "../styles/IngredientItem.css";
+import "../styles/DrinksPage.css";
+import "../styles/DrinkItem.css";
+import "../styles/DrinkPage.css";
 
 import Header from "../components/Header";
 import DrawerMenu from "../components/DrawerMenu";

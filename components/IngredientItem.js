@@ -1,18 +1,20 @@
 import React from "react";
 import Link from "next/link";
+import { Router, useRouter } from "next/router";
 
-const IngredientItem = ({ item }) => {
-  console.log(item);
+const IngredientItem = ({ item, setIsDrawerMenuOpen }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/drinks/${item.strIngredient1}`);
+    setIsDrawerMenuOpen(false);
+  };
+
   return (
-    <Link
-      href={`/drinks/${item.strIngredient1}`}
-      className="Link IngredientItem"
-    >
+    <div className="Link IngredientItem" onClick={handleClick}>
       {item.strIngredient1}
-    </Link>
+    </div>
   );
 };
-
-// <Link href={`/post/${post.id}`}>{post.title}</Link>
 
 export default IngredientItem;

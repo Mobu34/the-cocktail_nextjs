@@ -5,11 +5,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  border-right: 3px solid var(--color-orange);
+  border-right: 3px solid var(--color-rose);
   background-color: #fff;
   transition: 1s;
   padding: 10px;
   overflow-x: scroll;
+  z-index: 1;
 }
 .DrawerMenu-header {
   display: flex;
@@ -42,7 +43,7 @@
   margin: 10px 0;
   padding: 10px;
   text-align: center;
-  background-color: var(--color-orange);
+  background-color: var(--color-rose);
   color: #fff;
   cursor: pointer;
   box-sizing: border-box;
@@ -50,7 +51,7 @@
 .DrawerMenu-btn:hover {
   background-color: #fff;
   color: #000;
-  border: 2px solid var(--color-orange);
+  border: 2px solid var(--color-rose);
   transition: 0.5s;
   box-sizing: border-box;
 }

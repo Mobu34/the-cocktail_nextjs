@@ -1,0 +1,21 @@
+.DrinksPage {
+  margin-top: 150px;
+}
+/* .DrinksPage-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: center;
+} */
+.DrinksPage-container {
+  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
+}
+.DrinksPage-right-container {
+  margin-top: 150px;
+  /* margin-left: 50px; */
+}

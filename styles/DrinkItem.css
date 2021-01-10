@@ -1,0 +1,35 @@
+.DrinkItem {
+  cursor: pointer;
+  width: 300px;
+  margin: 5px;
+  background-color: var(--color-rose);
+}
+
+.DrinkItem-img-container {
+  position: relative;
+}
+.DrinkItem-img {
+  max-width: 300px;
+}
+.DrinkItem-noimg {
+  height: 300px;
+  width: 300px;
+}
+.DrinkItem-name {
+  text-align: center;
+  padding: 25px;
+  color: #fff;
+  /* font-size: 20px; */
+  /* font-family: var(--font-dancingScript); */
+  font-family: var(--font-sbeReg);
+}
+.DrinkItem-ingredients-container {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 14px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  bottom: 3px;
+}

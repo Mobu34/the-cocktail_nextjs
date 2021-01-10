@@ -72,7 +72,13 @@ const DrawerMenu = ({
       {ingredients && (
         <div className="DrawerMenu-ingredient-container">
           {ingredients.map((ingredient, index) => {
-            return <IngredientItem key={index} item={ingredient} />;
+            return (
+              <IngredientItem
+                key={index}
+                item={ingredient}
+                setIsDrawerMenuOpen={setIsDrawerMenuOpen}
+              />
+            );
           })}
         </div>
       )}
