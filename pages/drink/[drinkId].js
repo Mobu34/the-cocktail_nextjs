@@ -1,7 +1,35 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 const DrinkPage = ({ data }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const favorites = useSelector((state) => {
+    console.log(state);
+    const favsArray =
+      data[0].strAlcoholic === "Alcoholic"
+        ? state.favoritesAlcohol
+        : state.favoritesNonalcohol;
+    for (let i = 0; i <= favsArray.length; i++) {
+      if (i === favsArray.length) {
+        console.log("if");
+        if (isFavorite) {
+          setIsFavorite(false);
+        }
+        break;
+      } else if (data[0].idDrink === favsArray[i].idDrink) {
+        if (!isFavorite) {
+          console.log("else");
+          setIsFavorite(true);
+        }
+        break;
+      }
+    }
+  });
+
+  const dispatch = useDispatch();
+
   const ingredients = [];
   let i = 1;
   while (data) {
@@ -13,6 +41,15 @@ const DrinkPage = ({ data }) => {
       break;
     }
   }
+
+  const handleClick = () => {
+    const type =
+      data[0].strAlcoholic === "Alcoholic"
+        ? "TOGGLE_FAVORITES_ALCOHOLIC"
+        : "TOGGLE_FAVORITES_NONALCOHOLIC";
+    console.log(type);
+    dispatch({ type, value: data[0] });
+  };
 
   return (
     <div className="DrinkPage">
@@ -33,6 +70,11 @@ const DrinkPage = ({ data }) => {
               </ul>
               <h5>Instructions</h5>
               <p>{data[0].strInstructions}</p>
+              <div className="DrinkPage-favs" onClick={handleClick}>
+                {isFavorite
+                  ? "Supprimer des coups de coeur"
+                  : "Ajouter aux coups de coeur"}
+              </div>
             </div>
           </div>
         </div>

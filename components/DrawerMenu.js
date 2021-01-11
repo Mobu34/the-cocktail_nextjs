@@ -25,6 +25,12 @@ const DrawerMenu = ({
     setIngredients([]);
   };
 
+  const handleFavoritesClick = () => {
+    router.push("/favorites");
+    setIsDrawerMenuOpen(false);
+    setIngredients([]);
+  };
+
   const getAllIngredients = async () => {
     if (ingredients.length === 0) {
       try {
@@ -64,7 +70,9 @@ const DrawerMenu = ({
         >
           Cocktails sans alcool
         </div>
-        <div className="DrawerMenu-btn">Cocktails favoris</div>
+        <div className="DrawerMenu-btn" onClick={handleFavoritesClick}>
+          Coup(s) de coeur
+        </div>
         <div className="DrawerMenu-btn" onClick={getAllIngredients}>
           Ingrédients
         </div>

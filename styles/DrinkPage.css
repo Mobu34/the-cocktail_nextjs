@@ -52,3 +52,12 @@
 .DrinkPage-ingredients {
   margin-bottom: 50px;
 }
+.DrinkPage-favs {
+  margin-top: 50px;
+  background-color: var(--color-rose);
+  width: auto;
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+}

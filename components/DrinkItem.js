@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
-const DrinkItem = ({ item }) => {
+const DrinkItem = ({ item, isFavorite }) => {
   const [details, setDetails] = useState([]);
 
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleMouseEnter = async () => {
     try {
@@ -30,6 +32,15 @@ const DrinkItem = ({ item }) => {
     }
   };
 
+  const handleFavoritesClick = (e) => {
+    e.stopPropagation();
+    const type =
+      item.strAlcoholic === "Alcoholic"
+        ? "TOGGLE_FAVORITES_ALCOHOLIC"
+        : "TOGGLE_FAVORITES_NONALCOHOLIC";
+    dispatch({ type, value: item });
+  };
+
   return (
     <div
       className="DrinkItem"
@@ -38,6 +49,11 @@ const DrinkItem = ({ item }) => {
       onMouseLeave={() => setDetails([])}
     >
       <div className="DrinkItem-img-container">
+        {isFavorite ? (
+          <div className="DrinkItem-fav" onClick={handleFavoritesClick}></div>
+        ) : (
+          <div className="DrinkItem-nofav"></div>
+        )}
         {item.strDrinkThumb ? (
           <img
             className="DrinkItem-img"

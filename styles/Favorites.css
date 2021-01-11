@@ -1,0 +1,7 @@
+.Favorites-container {
+  margin-top: 150px;
+}
+.Favorites-carousel-container {
+  display: flex;
+  overflow-y: scroll;
+}
