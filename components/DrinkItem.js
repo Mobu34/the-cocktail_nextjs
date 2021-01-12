@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const DrinkItem = ({ item, isFavorite }) => {
   const [details, setDetails] = useState([]);
 
@@ -33,6 +35,7 @@ const DrinkItem = ({ item, isFavorite }) => {
   };
 
   const handleFavoritesClick = (e) => {
+    console.log(item);
     e.stopPropagation();
     const type =
       item.strAlcoholic === "Alcoholic"
@@ -50,9 +53,20 @@ const DrinkItem = ({ item, isFavorite }) => {
     >
       <div className="DrinkItem-img-container">
         {isFavorite ? (
-          <div className="DrinkItem-fav" onClick={handleFavoritesClick}></div>
+          <FontAwesomeIcon
+            className="DrinkItem-fav"
+            icon={["fas", "heart"]}
+            size="2x"
+            color="#ddb9ba"
+            onClick={handleFavoritesClick}
+          />
         ) : (
-          <div className="DrinkItem-nofav"></div>
+          <FontAwesomeIcon
+            className="DrinkItem-fav"
+            icon={["far", "heart"]}
+            size="2x"
+            color="#ddb9ba"
+          />
         )}
         {item.strDrinkThumb ? (
           <img

@@ -27,10 +27,7 @@ const DrinksPage = ({ drinks, type }) => {
   const rightDrinks = [];
   for (let i = 0; i < drinks.length; i++) {
     for (let j = 0; j < favs.length; j++) {
-      console.log("drinks =", drinks[i].idDrink);
-      console.log("favs =", favs[j].idDrink);
       if (drinks[i].idDrink === favs[j].idDrink) {
-        console.log("if");
         drinks[i].isFavorite = true;
         break;
       } else {

@@ -17,8 +17,6 @@ const persistedReducer = persistReducer(persistConfig, favoritesReducer);
 const store = createStore(persistedReducer);
 const persistor = persistStore(store);
 
-// const store = createStore(favoritesReducer);
-
 import "../styles/globals.css";
 import "../styles/Header.css";
 import "../styles/Home.css";
@@ -35,8 +33,9 @@ import Header from "../components/Header";
 import DrawerMenu from "../components/DrawerMenu";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-library.add(faBars, faTimes);
+import { faBars, faTimes, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
+library.add(faBars, faTimes, faHeart, farHeart);
 
 const MyApp = ({ Component, pageProps }) => {
   const [isDrawerMenuOpen, setIsDrawerMenuOpen] = useState(false);

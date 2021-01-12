@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const DrinkPage = ({ data }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -70,11 +72,33 @@ const DrinkPage = ({ data }) => {
               </ul>
               <h5>Instructions</h5>
               <p>{data[0].strInstructions}</p>
-              <div className="DrinkPage-favs" onClick={handleClick}>
-                {isFavorite
-                  ? "Supprimer des coups de coeur"
-                  : "Ajouter aux coups de coeur"}
-              </div>
+              {/* <div className="DrinkPage-favs" onClick={handleClick}> */}
+              {isFavorite ? (
+                <div
+                  className={`DrinkPage-favs ${isFavorite ? "del" : "add"}`}
+                  onClick={handleClick}
+                >
+                  Supprimer des coups de coeur
+                  <FontAwesomeIcon
+                    icon={["fas", "heart"]}
+                    size="1x"
+                    color="#ddb9ba"
+                  />
+                </div>
+              ) : (
+                <div
+                  className={`DrinkPage-favs ${isFavorite ? "del" : "add"}`}
+                  onClick={handleClick}
+                >
+                  Ajouter aux coups de coeur
+                  <FontAwesomeIcon
+                    icon={["fas", "heart"]}
+                    size="1x"
+                    color="#fff"
+                  />
+                </div>
+              )}
+              {/* </div> */}
             </div>
           </div>
         </div>

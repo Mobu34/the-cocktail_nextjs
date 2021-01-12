@@ -54,10 +54,19 @@
 }
 .DrinkPage-favs {
   margin-top: 50px;
-  background-color: var(--color-rose);
   width: auto;
   display: inline-block;
   padding: 10px;
   cursor: pointer;
+}
+.DrinkPage-favs > svg {
+  margin-left: 10px;
+}
+.add {
+  background-color: var(--color-rose);
+  border: 2px solid #fff;
   color: #fff;
+}
+.del {
+  border: 2px solid var(--color-rose);
 }
