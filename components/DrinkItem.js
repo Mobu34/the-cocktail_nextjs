@@ -7,6 +7,7 @@ import { getApi } from "../functions/api";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// component used to display drink cards
 const DrinkItem = ({ item, isFavorite }) => {
   const API = getApi();
 
@@ -15,6 +16,7 @@ const DrinkItem = ({ item, isFavorite }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
+  // this function is triggered when the mouse enters on a drink item
   const handleMouseEnter = async () => {
     try {
       const response = await axios.get(`${API}/drink?id=${item.idDrink}`);
@@ -22,6 +24,7 @@ const DrinkItem = ({ item, isFavorite }) => {
       if (response.status === 200) {
         const ingredients = [];
         for (let i = 1; i <= 5; i++) {
+          // this loop is used to get at maximum 5 ingredients for each cocktail
           let ingredient = "strIngredient" + i;
           if (response.data.drinks[0][ingredient]) {
             ingredients.push(response.data.drinks[0][ingredient]);
@@ -29,15 +32,15 @@ const DrinkItem = ({ item, isFavorite }) => {
             break;
           }
         }
-        setDetails(ingredients);
+        setDetails(ingredients); // and then to assign those to this state
       }
     } catch (err) {
       console.log(err);
     }
   };
 
+  // function triggered when we push/remove a cocktail into/from favorites
   const handleFavoritesClick = (e) => {
-    console.log(item);
     e.stopPropagation();
     const type =
       item.strAlcoholic === "Alcoholic"

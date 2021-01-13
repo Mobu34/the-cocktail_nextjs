@@ -1,4 +1,4 @@
+// function used to send the api to all components
 export const getApi = () => {
-  // return "http://localhost:3000/api";
   return "https://thecocktail-nextjs.vercel.app/api";
 };

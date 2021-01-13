@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// this request is used to get all drinks depending the ingredient we search
 export default async (req, res) => {
   try {
     const { i } = req.query;

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// this request is used to get all non alcoholic drinks
 export default async (req, res) => {
   try {
     const response = await axios.get(

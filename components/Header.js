@@ -17,6 +17,7 @@ const Header = ({ setIsDrawerMenuOpen, setIngredients }) => {
 
   const router = useRouter();
 
+  // this addEventListener is used to shrink the header title when we scroll
   window.addEventListener("scroll", () => {
     if (window.scrollY > 40) {
       setHeaderSize(20);
@@ -25,28 +26,34 @@ const Header = ({ setIsDrawerMenuOpen, setIngredients }) => {
     }
   });
 
+  // function triggered when we click on header title
   const handleBackHomeClick = () => {
     router.push("/");
     closeDrawerMenu(setIsDrawerMenuOpen, setIngredients);
   };
 
+  // function triggered when we change the input value
   const handleChange = async (e) => {
     setSearchInput(e.target.value);
     if (e.target.value.length > 1) {
+      // when the input value more characters than 1
       try {
         const response = await axios.get(
           `${API}/drinks/search?s=${e.target.value}`
         );
-        console.log(response.data.drinks);
+
         if (response.status === 200 && response.data.drinks) {
-          setSearchResults(response.data.drinks);
+          // if there is some drinks
+          setSearchResults(response.data.drinks); // push of these drinks to this state
         } else if (!response.data.drinks && searchResults.length > 0) {
-          setSearchResults([]);
+          // if there is no drink and the search results is more than 0
+          setSearchResults([]); // we empty the state
         }
       } catch (err) {
         console.log();
       }
     } else if (searchResults.length > 0) {
+      // when search results is more results than 0
       setSearchResults([]);
     }
   };
@@ -57,7 +64,6 @@ const Header = ({ setIsDrawerMenuOpen, setIngredients }) => {
         <div className="Header-drawermenu-icon-container">
           <FontAwesomeIcon
             icon="bars"
-            size={30}
             color="#ddb9ba"
             onClick={() => {
               setIsDrawerMenuOpen(true);
@@ -88,7 +94,6 @@ const Header = ({ setIsDrawerMenuOpen, setIngredients }) => {
           {searchResults.length > 0 && (
             <div className="Header-search-result-container">
               {searchResults.map((item) => {
-                console.log(item);
                 return (
                   <SearchResult
                     key={item.idDrink}
@@ -97,7 +102,6 @@ const Header = ({ setIsDrawerMenuOpen, setIngredients }) => {
                     setSearchResults={setSearchResults}
                   />
                 );
-                // console.log(item);
               })}
             </div>
           )}

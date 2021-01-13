@@ -3,6 +3,7 @@ const initialState = {
   favoritesNonalcohol: [],
 };
 
+// function used to add or remove the drink into/from favorites
 const toggleFavs = (stateFavs, actionValue) => {
   const nextFavorites = [...stateFavs];
   for (let i = 0; i <= nextFavorites.length; i++) {

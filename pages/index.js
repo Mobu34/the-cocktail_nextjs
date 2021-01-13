@@ -7,6 +7,7 @@ import CarouselItem from "../components/CarouselItem";
 
 import { closeDrawerMenu } from "../functions/closeDrawerMenu";
 
+// component used as page, is is used to display the home page
 const Home = ({
   setIsDrawerMenuOpen,
   setIngredients,
