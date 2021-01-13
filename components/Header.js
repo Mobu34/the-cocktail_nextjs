@@ -17,7 +17,17 @@ const Header = ({
 }) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [headerSize, setHeaderSize] = useState(60);
+
   const router = useRouter();
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 40) {
+      setHeaderSize(20);
+    } else {
+      setHeaderSize(60);
+    }
+  });
 
   const handleBackHomeClick = () => {
     router.push("/");
@@ -61,7 +71,11 @@ const Header = ({
         </div>
 
         <div>
-          <h1 className="Header-title" onClick={handleBackHomeClick}>
+          <h1
+            style={{ fontSize: headerSize }}
+            className="Header-title"
+            onClick={handleBackHomeClick}
+          >
             The Cocktail
           </h1>
         </div>
