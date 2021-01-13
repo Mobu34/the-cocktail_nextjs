@@ -5,8 +5,11 @@ import axios from "axios";
 
 import SearchResult from "../components/SearchResult";
 
+import { closeDrawerMenu } from "../functions/closeDrawerMenu";
+
 const Header = ({
   setIsDrawerMenuOpen,
+  setIngredients,
   // searchInput,
   // setSearchInput,
   // searchResults,
@@ -15,6 +18,11 @@ const Header = ({
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const router = useRouter();
+
+  const handleBackHomeClick = () => {
+    router.push("/");
+    closeDrawerMenu(setIsDrawerMenuOpen, setIngredients);
+  };
 
   const handleChange = async (e) => {
     setSearchInput(e.target.value);
@@ -40,22 +48,23 @@ const Header = ({
   return (
     <header>
       <div className="wrapper Header-container">
-        <FontAwesomeIcon
-          icon="bars"
-          size={30}
-          color="#ddb9ba"
-          onClick={() => {
-            setIsDrawerMenuOpen(true);
-          }}
-        />
-        {/* <div
-          onClick={() => {
-            setIsDrawerMenuOpen(true);
-          }}
-        >
-          ICON
-        </div> */}
-        <h1 onClick={() => router.push("/")}>The Cocktail</h1>
+        <div className="Header-drawermenu-icon-container">
+          <FontAwesomeIcon
+            icon="bars"
+            size={30}
+            color="#ddb9ba"
+            onClick={() => {
+              setIsDrawerMenuOpen(true);
+            }}
+            className="Header-drawermenu-icon"
+          />
+        </div>
+
+        <div>
+          <h1 className="Header-title" onClick={handleBackHomeClick}>
+            The Cocktail
+          </h1>
+        </div>
         <div className="Header-search-container">
           <input
             className="Header-search-input"
@@ -64,6 +73,7 @@ const Header = ({
             onChange={(e) => handleChange(e)}
             value={searchInput}
             placeholder="ex: Mojito"
+            onFocus={() => closeDrawerMenu(setIsDrawerMenuOpen, setIngredients)}
           />
           {searchResults.length > 0 && (
             <div className="Header-search-result-container">

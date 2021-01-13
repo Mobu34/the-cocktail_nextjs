@@ -5,7 +5,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Title from "../components/Title";
 import CarouselItem from "../components/CarouselItem";
 
-const Home = ({ setIsDrawerMenuOpen, alcohols, nonalcohols }) => {
+import { closeDrawerMenu } from "../functions/closeDrawerMenu";
+
+const Home = ({
+  setIsDrawerMenuOpen,
+  setIngredients,
+  alcohols,
+  nonalcohols,
+}) => {
   return (
     <>
       <Head>
@@ -15,9 +22,7 @@ const Home = ({ setIsDrawerMenuOpen, alcohols, nonalcohols }) => {
 
       <div
         className="Home"
-        onClick={() => {
-          setIsDrawerMenuOpen(false);
-        }}
+        onClick={() => closeDrawerMenu(setIsDrawerMenuOpen, setIngredients)}
       >
         {alcohols && (
           <div className="Home-first-container">

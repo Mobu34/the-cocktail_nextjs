@@ -1,13 +1,13 @@
 import React from "react";
-import Link from "next/link";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
-const IngredientItem = ({ item, setIsDrawerMenuOpen }) => {
+const IngredientItem = ({ item, setIsDrawerMenuOpen, setIngredients }) => {
   const router = useRouter();
 
   const handleClick = () => {
     router.push(`/drinks/${item.strIngredient1}`);
     setIsDrawerMenuOpen(false);
+    setIngredients([]);
   };
 
   return (

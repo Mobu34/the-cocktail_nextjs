@@ -5,7 +5,9 @@ import { useRouter } from "next/router";
 
 import DrinkItem from "../../components/DrinkItem";
 
-const DrinksPage = ({ drinks, type }) => {
+import { closeDrawerMenu } from "../../functions/closeDrawerMenu";
+
+const DrinksPage = ({ drinks, type, setIsDrawerMenuOpen, setIngredients }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [favs, setFavs] = useState([]);
 
@@ -41,11 +43,11 @@ const DrinksPage = ({ drinks, type }) => {
     }
   }
 
-  // console.log("left =", leftDrinks);
-  // console.log("right =", rightDrinks);
-
   return (
-    <div className="DrinksPage">
+    <div
+      className="DrinksPage"
+      onClick={() => closeDrawerMenu(setIsDrawerMenuOpen, setIngredients)}
+    >
       <div className="wrapper">
         <h2>
           {type === "alcohol"

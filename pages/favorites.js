@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import DrinkItem from "../components/DrinkItem";
 
-const Favorites = () => {
+import { closeDrawerMenu } from "../functions/closeDrawerMenu";
+
+const Favorites = ({ setIsDrawerMenuOpen, setIngredients }) => {
   const [alcohols, setAlcohols] = useState([]);
   const [nonalcohols, setNonalcohols] = useState([]);
 
@@ -17,7 +19,10 @@ const Favorites = () => {
   });
 
   return (
-    <div className="Favorites">
+    <div
+      className="Favorites"
+      onClick={() => closeDrawerMenu(setIsDrawerMenuOpen, setIngredients)}
+    >
       <div className="wrapper">
         <div className="Favorites-container">
           {alcohols.length > 0 ? (

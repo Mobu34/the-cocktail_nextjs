@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import { closeDrawerMenu } from "../../functions/closeDrawerMenu";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const DrinkPage = ({ data }) => {
+const DrinkPage = ({ data, setIsDrawerMenuOpen, setIngredients }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const favorites = useSelector((state) => {
@@ -54,7 +56,10 @@ const DrinkPage = ({ data }) => {
   };
 
   return (
-    <div className="DrinkPage">
+    <div
+      className="DrinkPage"
+      onClick={() => closeDrawerMenu(setIsDrawerMenuOpen, setIngredients)}
+    >
       <div className="DrinkPage-wrapper">
         <h2>{data[0].strDrink}</h2>
         <div className="DrinkPage-container">

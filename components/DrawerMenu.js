@@ -54,7 +54,11 @@ const DrawerMenu = ({
       <div className="DrawerMenu-header">
         <div></div>
         <h3>Menu</h3>
-        <FontAwesomeIcon icon="times" onClick={handleCloseClick} />
+        <FontAwesomeIcon
+          icon="times"
+          onClick={handleCloseClick}
+          className="DrawerMenu-close-icon"
+        />
         {/* <div className="DrawerMenu-close-icon" onClick={handleCloseClick}></div> */}
       </div>
       <div className="DrawerMenu-btn-container">
@@ -85,6 +89,7 @@ const DrawerMenu = ({
                 key={index}
                 item={ingredient}
                 setIsDrawerMenuOpen={setIsDrawerMenuOpen}
+                setIngredients={setIngredients}
               />
             );
           })}

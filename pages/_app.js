@@ -40,8 +40,8 @@ library.add(faBars, faTimes, faHeart, farHeart);
 const MyApp = ({ Component, pageProps }) => {
   const [isDrawerMenuOpen, setIsDrawerMenuOpen] = useState(false);
   const [ingredients, setIngredients] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  // const [searchInput, setSearchInput] = useState("");
+  // const [searchResults, setSearchResults] = useState([]);
 
   return (
     <Provider store={store}>
@@ -49,10 +49,11 @@ const MyApp = ({ Component, pageProps }) => {
         <div className="App">
           <Header
             setIsDrawerMenuOpen={setIsDrawerMenuOpen}
-            searchInput={searchInput}
-            setSearchInput={setSearchInput}
-            searchResults={searchResults}
-            setSearchInput={setSearchResults}
+            setIngredients={setIngredients}
+            // searchInput={searchInput}
+            // setSearchInput={setSearchInput}
+            // searchResults={searchResults}
+            // setSearchInput={setSearchResults}
           />
           <DrawerMenu
             isDrawerMenuOpen={isDrawerMenuOpen}
@@ -60,7 +61,11 @@ const MyApp = ({ Component, pageProps }) => {
             ingredients={ingredients}
             setIngredients={setIngredients}
           />
-          <Component {...pageProps} setIsDrawerMenuOpen={setIsDrawerMenuOpen} />
+          <Component
+            {...pageProps}
+            setIsDrawerMenuOpen={setIsDrawerMenuOpen}
+            setIngredients={setIngredients}
+          />
         </div>
       </PersistGate>
     </Provider>

@@ -18,9 +18,24 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+.Header-drawermenu-icon-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+.Header-drawermenu-icon {
+  cursor: pointer;
+}
+.Header-title {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+}
 .Header-search-container {
   position: relative;
-  background-color: blue;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 .Header-search-input {
   border: 2px solid var(--color-rose);
@@ -36,6 +51,7 @@ header {
   max-height: 200px;
   overflow-x: scroll;
   /* top: 0px; */
-  left: 0;
+  right: 0;
+  top: 30px;
   width: 200px;
 }
