@@ -27,7 +27,7 @@ const Home = ({
         {alcohols && (
           <div className="Home-first-container">
             <div className="wrapper">
-              <Title title="Faites vous plaisir notre sélection de cocktails alcoolisés ..." />
+              <Title title="Faites vous plaisir avec notre sélection de cocktails alcoolisés ..." />
             </div>
             <div className="Home-carousel-container">
               <div className="wrapper">

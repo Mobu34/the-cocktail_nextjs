@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Head from "next/head";
 
 import { closeDrawerMenu } from "../../functions/closeDrawerMenu";
 
@@ -56,59 +57,66 @@ const DrinkPage = ({ data, setIsDrawerMenuOpen, setIngredients }) => {
   };
 
   return (
-    <div
-      className="DrinkPage"
-      onClick={() => closeDrawerMenu(setIsDrawerMenuOpen, setIngredients)}
-    >
-      <div className="DrinkPage-wrapper">
-        <h2>{data[0].strDrink}</h2>
-        <div className="DrinkPage-container">
-          <div className="DrinkPage-left-container">
-            <div className="DrinkPage-bgc"></div>
-            <img src={data[0].strDrinkThumb} className="DrinkPage-img" />
-          </div>
-          <div className="DrinkPage-right-container">
-            <div className="DrinkPage-right-subcontainer">
-              <h5>Ingredients</h5>
-              <ul className="DrinkPage-ingredients">
-                {ingredients.map((item, index) => {
-                  return <li key={index}>{item}</li>;
-                })}
-              </ul>
-              <h5>Instructions</h5>
-              <p>{data[0].strInstructions}</p>
-              {/* <div className="DrinkPage-favs" onClick={handleClick}> */}
-              {isFavorite ? (
-                <div
-                  className={`DrinkPage-favs ${isFavorite ? "del" : "add"}`}
-                  onClick={handleClick}
-                >
-                  Supprimer des coups de coeur
-                  <FontAwesomeIcon
-                    icon={["fas", "heart"]}
-                    size="1x"
-                    color="#ddb9ba"
-                  />
-                </div>
-              ) : (
-                <div
-                  className={`DrinkPage-favs ${isFavorite ? "del" : "add"}`}
-                  onClick={handleClick}
-                >
-                  Ajouter aux coups de coeur
-                  <FontAwesomeIcon
-                    icon={["fas", "heart"]}
-                    size="1x"
-                    color="#fff"
-                  />
-                </div>
-              )}
-              {/* </div> */}
+    <>
+      <Head>
+        <title>The Cocktail - {data[0].strDrink}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div
+        className="DrinkPage"
+        onClick={() => closeDrawerMenu(setIsDrawerMenuOpen, setIngredients)}
+      >
+        <div className="DrinkPage-wrapper">
+          <h2>{data[0].strDrink}</h2>
+          <div className="DrinkPage-container">
+            <div className="DrinkPage-left-container">
+              <div className="DrinkPage-bgc"></div>
+              <img src={data[0].strDrinkThumb} className="DrinkPage-img" />
+            </div>
+            <div className="DrinkPage-right-container">
+              <div className="DrinkPage-right-subcontainer">
+                <h5>Ingredients</h5>
+                <ul className="DrinkPage-ingredients">
+                  {ingredients.map((item, index) => {
+                    return <li key={index}>{item}</li>;
+                  })}
+                </ul>
+                <h5>Instructions</h5>
+                <p>{data[0].strInstructions}</p>
+                {/* <div className="DrinkPage-favs" onClick={handleClick}> */}
+                {isFavorite ? (
+                  <div
+                    className={`DrinkPage-favs ${isFavorite ? "del" : "add"}`}
+                    onClick={handleClick}
+                  >
+                    Supprimer des coups de coeur
+                    <FontAwesomeIcon
+                      icon={["fas", "heart"]}
+                      size="1x"
+                      color="#ddb9ba"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className={`DrinkPage-favs ${isFavorite ? "del" : "add"}`}
+                    onClick={handleClick}
+                  >
+                    Ajouter aux coups de coeur
+                    <FontAwesomeIcon
+                      icon={["fas", "heart"]}
+                      size="1x"
+                      color="#fff"
+                    />
+                  </div>
+                )}
+                {/* </div> */}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
