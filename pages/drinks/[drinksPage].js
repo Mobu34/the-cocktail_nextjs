@@ -80,23 +80,24 @@ const DrinksPage = ({ drinks, type, setIsDrawerMenuOpen, setIngredients }) => {
 
 export default DrinksPage;
 
+import { getApi } from "../../functions/api";
+
+console.log("page");
 export const getServerSideProps = async (context) => {
+  const API = getApi();
+
   try {
     const { drinksPage } = context.query;
     let response;
     switch (drinksPage) {
       case "alcohol":
-        response = await axios.get("http://localhost:3000/api/drinks/alcohols");
+        response = await axios.get(`${API}/drinks/alcohols`);
         break;
       case "nonalcohol":
-        response = await axios.get(
-          "http://localhost:3000/api/drinks/nonalcohols"
-        );
+        response = await axios.get(`${API}/drinks/nonalcohols`);
         break;
       default:
-        response = await axios.get(
-          `http://localhost:3000/api/drinks/ingredient?i=${drinksPage}`
-        );
+        response = await axios.get(`${API}/drinks/ingredient?i=${drinksPage}`);
         break;
     }
 

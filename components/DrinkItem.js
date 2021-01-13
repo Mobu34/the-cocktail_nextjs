@@ -3,9 +3,13 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 
+import { getApi } from "../functions/api";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const DrinkItem = ({ item, isFavorite }) => {
+  const API = getApi();
+
   const [details, setDetails] = useState([]);
 
   const router = useRouter();
@@ -13,9 +17,7 @@ const DrinkItem = ({ item, isFavorite }) => {
 
   const handleMouseEnter = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:3000/api/drink?id=${item.idDrink}`
-      );
+      const response = await axios.get(`${API}/drink?id=${item.idDrink}`);
 
       if (response.status === 200) {
         const ingredients = [];

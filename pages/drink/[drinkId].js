@@ -114,12 +114,13 @@ const DrinkPage = ({ data, setIsDrawerMenuOpen, setIngredients }) => {
 
 export default DrinkPage;
 
+import { getApi } from "../../functions/api";
+
 export const getServerSideProps = async (context) => {
+  const API = getApi();
   try {
     const { drinkId } = context.query;
-    const response = await axios.get(
-      `http://localhost:3000/api/drink?id=${drinkId}`
-    );
+    const response = await axios.get(`${API}/drink?id=${drinkId}`);
 
     return {
       props: {

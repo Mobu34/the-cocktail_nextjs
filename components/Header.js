@@ -5,16 +5,12 @@ import axios from "axios";
 
 import SearchResult from "../components/SearchResult";
 
+import { getApi } from "../functions/api";
 import { closeDrawerMenu } from "../functions/closeDrawerMenu";
 
-const Header = ({
-  setIsDrawerMenuOpen,
-  setIngredients,
-  // searchInput,
-  // setSearchInput,
-  // searchResults,
-  // setSearchResults,
-}) => {
+const Header = ({ setIsDrawerMenuOpen, setIngredients }) => {
+  const API = getApi();
+
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [headerSize, setHeaderSize] = useState(60);
@@ -39,7 +35,7 @@ const Header = ({
     if (e.target.value.length > 1) {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/drinks/search?s=${e.target.value}`
+          `${API}/drinks/search?s=${e.target.value}`
         );
         console.log(response.data.drinks);
         if (response.status === 200 && response.data.drinks) {

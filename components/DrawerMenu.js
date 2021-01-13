@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getApi } from "../functions/api";
 
 import IngredientItem from "./IngredientItem";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const DrawerMenu = ({
   isDrawerMenuOpen,
@@ -12,6 +14,8 @@ const DrawerMenu = ({
   ingredients,
   setIngredients,
 }) => {
+  const API = getApi();
+
   const router = useRouter();
 
   const handleCloseClick = () => {
@@ -34,9 +38,7 @@ const DrawerMenu = ({
   const getAllIngredients = async () => {
     if (ingredients.length === 0) {
       try {
-        const response = await axios.get(
-          "http://localhost:3000/api/ingredients"
-        );
+        const response = await axios.get(`${API}/ingredients`);
 
         if (response.status === 200) {
           setIngredients(response.data.drinks);
