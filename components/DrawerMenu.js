@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-import { getApi } from "../functions/api";
+import { getApi } from "../functions/api"; // this function is imported to use the API
+import { closeDrawerMenu } from "../functions/closeDrawerMenu"; // this function is imported to close the drawer menu
 
 import IngredientItem from "./IngredientItem";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// this component is used for the left drawer menu
 const DrawerMenu = ({
   isDrawerMenuOpen,
   setIsDrawerMenuOpen,
@@ -18,23 +20,19 @@ const DrawerMenu = ({
 
   const router = useRouter();
 
-  const handleCloseClick = () => {
-    setIsDrawerMenuOpen(false);
-    setIngredients([]);
-  };
-
+  // this function is triggered when we click alcohol or nonalcohol cocktails
   const handleAllDrinksClick = (name) => {
     router.push(`/drinks/${name}`);
-    setIsDrawerMenuOpen(false);
-    setIngredients([]);
+    closeDrawerMenu(setIsDrawerMenuOpen, setIngredients);
   };
 
+  // this function is triggered when we click on favorites
   const handleFavoritesClick = () => {
     router.push("/favorites");
-    setIsDrawerMenuOpen(false);
-    setIngredients([]);
+    closeDrawerMenu(setIsDrawerMenuOpen, setIngredients);
   };
 
+  // this function is triggered to display all ingredients
   const getAllIngredients = async () => {
     if (ingredients.length === 0) {
       try {
@@ -58,10 +56,9 @@ const DrawerMenu = ({
         <h3>Menu</h3>
         <FontAwesomeIcon
           icon="times"
-          onClick={handleCloseClick}
+          onClick={() => closeDrawerMenu(setIsDrawerMenuOpen, setIngredients)}
           className="DrawerMenu-close-icon"
         />
-        {/* <div className="DrawerMenu-close-icon" onClick={handleCloseClick}></div> */}
       </div>
       <div className="DrawerMenu-btn-container">
         <div
@@ -101,7 +98,6 @@ const DrawerMenu = ({
   ) : (
     <></>
   );
-  //   return <div className="DrawerMenu"></div>;
 };
 
 export default DrawerMenu;

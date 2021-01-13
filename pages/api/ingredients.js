@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// this request is triggered to get all ingredients
 export default async (req, res) => {
   try {
     const response = await axios.get(

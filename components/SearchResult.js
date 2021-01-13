@@ -1,16 +1,17 @@
 import React from "react";
 import { useRouter } from "next/router";
 
+// component used to display the results of the search
 const SearchResult = ({ item, setSearchInput, setSearchResults }) => {
   const router = useRouter();
 
+  // function triggered when we click on a result
   const handleClick = () => {
     router.push(`/drink/${item.idDrink}`);
-    setSearchInput("");
-    setSearchResults([]);
+    setSearchInput(""); // we empty the input value
+    setSearchResults([]); // we empty the results
   };
 
-  //   router.push(`/drink/${item.strDrink}`);
   return (
     <div className="SearchResult" onClick={handleClick}>
       {item.strDrink}

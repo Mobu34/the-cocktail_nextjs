@@ -10,33 +10,23 @@
   margin-top: 20px;
 }
 .DrinkPage-left-container {
-  /* background-color: blue; */
   width: auto;
   position: relative;
 }
 .DrinkPage-bgc {
   background: url("../assets/rosegoldbgc.jpg") no-repeat;
-  /* background-color: var(--color-rose); */
   width: 300px;
   height: 300px;
-  /* height: 100vh; */
-  /* height: 100%; */
-  /* 570 × 456 */
 }
-
 .DrinkPage-img {
   position: absolute;
-  /* top: 100px;
-  left: 450px; */
   width: 500px;
   object-fit: cover;
-  /* object-fit: contain; */
   height: 300px;
   top: 50px;
   left: 50px;
 }
 .DrinkPage-right-container {
-  /* background-color: blue; */
   width: 100%;
   height: 500px;
   margin-left: 200px;
@@ -45,7 +35,6 @@
 }
 .DrinkPage-right-subcontainer {
   border: 1px solid var(--color-rose);
-  /* width: 100%; */
   height: 100%;
   padding: 50px 100px;
 }

@@ -4,8 +4,6 @@
 .Home-carousel-container {
   width: 100%;
   height: 300px;
-  /* background-color: var(--color-wine); */
-  /* background-color: #ecbbaf; */
   background: url("../assets/rosegoldbgc.jpg");
   margin-top: 20px;
 }

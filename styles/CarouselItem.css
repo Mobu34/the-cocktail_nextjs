@@ -9,16 +9,10 @@
 }
 .CarouselItem-drinkname {
   position: absolute;
-  color: green;
   top: 10px;
   z-index: 99;
-  /* background-color: #fff; */
-
   padding: 10px;
-  /* color: var(--color-orange); */
   background-color: #000;
-  color: #ddb9ba;
-  /* font-family: var(--font-dancingScript); */
+  color: var(--color-rose);
   font-family: var(--font-sbeReg);
-  /* font-size: 20px; */
 }

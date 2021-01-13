@@ -6,6 +6,7 @@ import DrinkItem from "../components/DrinkItem";
 
 import { closeDrawerMenu } from "../functions/closeDrawerMenu";
 
+// component used as a page, it is used to display the favorites
 const Favorites = ({ setIsDrawerMenuOpen, setIngredients }) => {
   const [alcohols, setAlcohols] = useState([]);
   const [nonalcohols, setNonalcohols] = useState([]);

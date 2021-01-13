@@ -1,6 +1,4 @@
 .IngredientItem {
-  /* border-bottom: 1px solid var(--color-orange);
-  margin-top: 10px; */
   border-bottom: 1px solid var(--color-rose);
   margin-top: 10px;
   cursor: pointer;

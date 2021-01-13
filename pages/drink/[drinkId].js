@@ -7,25 +7,24 @@ import { closeDrawerMenu } from "../../functions/closeDrawerMenu";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// component used as a page, it is used to display a specific drink with its details
 const DrinkPage = ({ data, setIsDrawerMenuOpen, setIngredients }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const favorites = useSelector((state) => {
-    console.log(state);
+    // this is to get the favorites and add a heart icon if the cocktail is in favorites
     const favsArray =
       data[0].strAlcoholic === "Alcoholic"
         ? state.favoritesAlcohol
         : state.favoritesNonalcohol;
     for (let i = 0; i <= favsArray.length; i++) {
       if (i === favsArray.length) {
-        console.log("if");
         if (isFavorite) {
           setIsFavorite(false);
         }
         break;
       } else if (data[0].idDrink === favsArray[i].idDrink) {
         if (!isFavorite) {
-          console.log("else");
           setIsFavorite(true);
         }
         break;
@@ -35,6 +34,7 @@ const DrinkPage = ({ data, setIsDrawerMenuOpen, setIngredients }) => {
 
   const dispatch = useDispatch();
 
+  // here we push all ingredients of the drink in a array to display them
   const ingredients = [];
   let i = 1;
   while (data) {
@@ -47,12 +47,12 @@ const DrinkPage = ({ data, setIsDrawerMenuOpen, setIngredients }) => {
     }
   }
 
+  // function used to push/remove the drink into/from favorites
   const handleClick = () => {
     const type =
       data[0].strAlcoholic === "Alcoholic"
         ? "TOGGLE_FAVORITES_ALCOHOLIC"
         : "TOGGLE_FAVORITES_NONALCOHOLIC";
-    console.log(type);
     dispatch({ type, value: data[0] });
   };
 
@@ -84,7 +84,6 @@ const DrinkPage = ({ data, setIsDrawerMenuOpen, setIngredients }) => {
                 </ul>
                 <h5>Instructions</h5>
                 <p>{data[0].strInstructions}</p>
-                {/* <div className="DrinkPage-favs" onClick={handleClick}> */}
                 {isFavorite ? (
                   <div
                     className={`DrinkPage-favs ${isFavorite ? "del" : "add"}`}
@@ -110,7 +109,6 @@ const DrinkPage = ({ data, setIsDrawerMenuOpen, setIngredients }) => {
                     />
                   </div>
                 )}
-                {/* </div> */}
               </div>
             </div>
           </div>

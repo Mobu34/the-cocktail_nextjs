@@ -8,14 +8,14 @@ import DrinkItem from "../../components/DrinkItem";
 
 import { closeDrawerMenu } from "../../functions/closeDrawerMenu";
 
+// component used as a page, it is used to display all alcoholic/non alcoholic drinks
 const DrinksPage = ({ drinks, type, setIsDrawerMenuOpen, setIngredients }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
   const [favs, setFavs] = useState([]);
 
   const router = useRouter();
-  // console.log(router.query.drinksPage);
 
   const favorites = useSelector((state) => {
+    // this is to get the favorites and add a heart icon to all drinks that are in favorites
     const type =
       router.query.drinksPage === "alcohol"
         ? "favoritesAlcohol"
@@ -26,6 +26,7 @@ const DrinksPage = ({ drinks, type, setIsDrawerMenuOpen, setIngredients }) => {
     }
   });
 
+  // this is to create the left and the right columns
   const leftDrinks = [];
   const rightDrinks = [];
   for (let i = 0; i < drinks.length; i++) {
@@ -45,7 +46,6 @@ const DrinksPage = ({ drinks, type, setIsDrawerMenuOpen, setIngredients }) => {
   }
 
   return (
-    // Les cocktails alcoolisés
     <>
       <Head>
         <title>
@@ -75,7 +75,6 @@ const DrinksPage = ({ drinks, type, setIsDrawerMenuOpen, setIngredients }) => {
         <div className="DrinksPage-container">
           <div className="DrinksPage-left-container">
             {leftDrinks.map((item, index) => {
-              // console.log(item);
               return (
                 <DrinkItem
                   key={index}
@@ -106,7 +105,6 @@ export default DrinksPage;
 
 import { getApi } from "../../functions/api";
 
-console.log("page");
 export const getServerSideProps = async (context) => {
   const API = getApi();
 

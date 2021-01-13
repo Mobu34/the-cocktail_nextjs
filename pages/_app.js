@@ -7,6 +7,7 @@ import storage from "redux-persist/lib/storage";
 
 import favoritesReducer from "../reducers/favorites.reducer";
 
+// this is used to persist the data in the favorites
 const persistConfig = {
   key: "root",
   storage,
@@ -40,8 +41,6 @@ library.add(faBars, faTimes, faHeart, farHeart);
 const MyApp = ({ Component, pageProps }) => {
   const [isDrawerMenuOpen, setIsDrawerMenuOpen] = useState(false);
   const [ingredients, setIngredients] = useState([]);
-  // const [searchInput, setSearchInput] = useState("");
-  // const [searchResults, setSearchResults] = useState([]);
 
   return (
     <Provider store={store}>
@@ -50,10 +49,6 @@ const MyApp = ({ Component, pageProps }) => {
           <Header
             setIsDrawerMenuOpen={setIsDrawerMenuOpen}
             setIngredients={setIngredients}
-            // searchInput={searchInput}
-            // setSearchInput={setSearchInput}
-            // searchResults={searchResults}
-            // setSearchInput={setSearchResults}
           />
           <DrawerMenu
             isDrawerMenuOpen={isDrawerMenuOpen}
