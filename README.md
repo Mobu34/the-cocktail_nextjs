@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+<a href="https://thecocktail-nextjs.vercel.app/">
+  <img style="width:40%" src="./assets/cocktail.jpg" alt ="TellMeMore logo"  />
+  </a>
+</p>
+<br/>
+<br/>
+<h1>The Cocktail (Front & Back : Next.js / Deployed on Vercel)</h1>
+<br/>
+<p>Fullstack project on Next.js based on the <a href="https://www.thecocktaildb.com/api.php">The Cocktail DB API</a>.</p>
 
-## Getting Started
+<h3>
+<p>
+You can find the <a href="https://thecocktail-nextjs.vercel.app/">Live Demo here !</a>
+</p>
+</h3>
+<br/>
+<br/>
+<p align="center">
+<a href="https://thecocktail-nextjs.vercel.app/">
+  <img src="./assets/screen.png" alt ="TheCocktail homepage"  />
+  </a>
+</p>
+<br/>
+<h2 style="color:#ddb9ba" >Features</h2>
+<ul>
+  <li>Get random cocktails with their recipe</li>
+  
+  <li>Search cocktails and get suggestions</li>
+  
+  <li>Search cocktails by ingredients</li>
+  
+  <li>Add cocktails into favorites</li>
+ 
+  </ul>
 
-First, run the development server:
+<br/>
+<h2 style="color:#ddb9ba" >Next features</h2>
+<ul>
+  <li>Create your own cocktails and share them with all other cocktails</li>
+  
+  <li>Offline mode</li>
+ 
+  </ul>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<br/>
+<h2 style="color:#ddb9ba">Packages used</h2>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<ul>
+  <li>next</li>
+  <li>axios</li>
+  <li>react</li>
+  <li>redux</li>
+  <li>font-awesome</li>
+<li>react-responsie-carousel</li>
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+  </ul>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<br/>
+<h2 style="color:#ddb9ba">Install</h2>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<p>Just run <code>yarn</code> in your console to install all dependencies and <code>yarn start</code> to launch.</p>
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<br/>
